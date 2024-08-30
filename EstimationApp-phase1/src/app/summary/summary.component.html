@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summary</title>
+  <style>
+    .bold {
+      font-weight: bold;
+    }
+    .table-container {
+      max-height: 400px; /* Set the desired height for the table container */
+      overflow-y: auto;
+      position: relative;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      text-align: left;
+      background-color: #f2f2f2;
+      position: sticky;
+      top: 0;
+      z-index: 2; /* Ensure header is above other rows */
+    }
+    tfoot {
+      background-color: #f2f2f2;
+      position: sticky;
+      bottom: 0;
+      z-index: 1; /* Ensure footer is above other rows but below header */
+    }
+    tfoot td {
+      background-color: #f2f2f2; /* Ensure footer cells have background color */
+    }
+  </style>
+</head>
+<body>
+  <mat-form-field>
+    <mat-label>Tribe/Practice</mat-label>
+    <mat-select [(ngModel)]="selectedTribes" multiple class="custom-dropdown">
+      <mat-option (click)="selectTribes()">Select All</mat-option>
+      <mat-option *ngFor="let tribe of tribes" [value]="tribe">{{ tribe }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Products</mat-label>
+    <mat-select [(ngModel)]="selectedProducts" multiple>
+      <mat-option (click)="selectProducts()">Select All</mat-option>
+      <mat-option *ngFor="let product of products" [value]="product">{{ product }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Column Labels</mat-label>
+    <mat-select [(ngModel)]="selectedColumnLabels" multiple (selectionChange)="filterData()">
+      <mat-checkbox [checked]="selectedColumnLabels.length === columnLabels.length" (click)="selectAllColumns($event)">
+        Select All
+      </mat-checkbox>
+      <mat-option *ngFor="let columnLabel of columnLabels" [value]="columnLabel">
+        {{ columnLabel }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Row Labels</mat-label>
+    <mat-select [(ngModel)]="selectedRowLabels" multiple (selectionChange)="filterData()">
+      <mat-checkbox [checked]="selectedRowLabels.length === rowLabels.length" (click)="selectAllRows($event)">
+        Select All
+      </mat-checkbox>
+      <mat-option *ngFor="let rowLabel of rowLabels" [value]="rowLabel">
+        {{ rowLabel }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sequence</th>
+          <th>Components</th>
+          <th *ngFor="let label of selectedColumnLabels">{{ label }}</th>
+          <th class="bold">Grand Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let sequence of filteredSequences">
+          <tr class="bold">
+            <td>{{ sequence }}</td>
+            <td>Group Total</td>
+            <td *ngFor="let columnLabel of selectedColumnLabels">{{ calculateGroupColumnTotal(sequence, columnLabel) }}</td>
+            <td>{{ calculateGroupTotal(sequence) }}</td>
+          </tr>
+          <ng-container *ngFor="let row of filteredData[sequence]">
+            <tr>
+              <td></td>
+              <td>{{ row.label }}</td>
+              <td *ngFor="let columnLabel of selectedColumnLabels">{{ row.values[columnLabel] || '-' }}</td>
+              <td class="bold">{{ calculateRowTotal(row.values) }}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td class="bold">Grand Total</td>
+          <td *ngFor="let columnLabel of selectedColumnLabels">{{ calculateColumnTotal(columnLabel) }}</td>
+          <td class="bold">{{ calculateGrandTotal() }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+<html class="dialog">
+<h1 mat-dialog-title>{{ data.message }}</h1>
+<div mat-dialog-content>
+  <p class="pp">Do you want to Delete this Component</p>
+</div>
+<div mat-dialog-actions class="icons">
+  <button class="cancel" mat-button (click)="onClick(false)">{{ data.buttonText.no }}</button>
+  <button class="yes" mat-button (click)="onClick(true)">{{ data.buttonText.yes }}</button>
+  
+</div>
+</html>

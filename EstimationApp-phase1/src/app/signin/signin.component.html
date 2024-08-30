@@ -1,0 +1,70 @@
+<body>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24" fxFill>
+
+    <mat-card class="mat-elevation-z4 ">
+        <mat-card-content>
+            <div fxLayout="column"  fxLayoutGap="24px">
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <div class="title-name">Request For Proposal</div>
+                    <div class="sub-title">Please sign in to continue </div>
+                </div>
+                <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()"> 
+                    <div fxLayout="column" fxLayoutGap="19">
+                
+                        <mat-form-field appearance="outline" style="width:352px;background-color: #FAFAFA;height: 56px;">
+                            <input matInput placeholder="Email" formControlName="email" required >
+                            <mat-icon class="icon" matPrefix>perm_identity</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched" class="error-message1">*Email is required</div>
+                        <mat-error class="error-message1"
+                        *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">*Please
+                        enter a valid email address</mat-error>
+                        <mat-form-field appearance="outline" style="width:352px;background-color: #FAFAFA;height: 56px;">
+                            <input matInput type="password" placeholder="Password" formControlName="password" required>
+                            <mat-icon class="icon" matPrefix  style="margin-top: -20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                    <path d="M5.5 22.5C5.08333 22.5 4.72917 22.3542 4.4375 22.0625C4.14583 21.7708 4 21.4167 4 21V10.15C4 9.73333 4.14583 9.37917 4.4375 9.0875C4.72917 8.79583 5.08333 8.65 5.5 8.65H7.25V6.25C7.25 4.93333 7.7125 3.8125 8.6375 2.8875C9.5625 1.9625 10.6833 1.5 12 1.5C13.3167 1.5 14.4375 1.9625 15.3625 2.8875C16.2875 3.8125 16.75 4.93333 16.75 6.25V8.65H18.5C18.9167 8.65 19.2708 8.79583 19.5625 9.0875C19.8542 9.37917 20 9.73333 20 10.15V21C20 21.4167 19.8542 21.7708 19.5625 22.0625C19.2708 22.3542 18.9167 22.5 18.5 22.5H5.5ZM5.5 21H18.5V10.15H5.5V21ZM12 17.5C12.5333 17.5 12.9875 17.3167 13.3625 16.95C13.7375 16.5833 13.925 16.1417 13.925 15.625C13.925 15.125 13.7375 14.6708 13.3625 14.2625C12.9875 13.8542 12.5333 13.65 12 13.65C11.4667 13.65 11.0125 13.8542 10.6375 14.2625C10.2625 14.6708 10.075 15.125 10.075 15.625C10.075 16.1417 10.2625 16.5833 10.6375 16.95C11.0125 17.3167 11.4667 17.5 12 17.5ZM8.75 8.65H15.25V6.25C15.25 5.35 14.9333 4.58333 14.3 3.95C13.6667 3.31667 12.9 3 12 3C11.1 3 10.3333 3.31667 9.7 3.95C9.06667 4.58333 8.75 5.35 8.75 6.25V8.65Z" fill="black" fill-opacity="0.6"/>
+                                </svg>
+                            </mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched" class="error-message2">*Password is required</div>
+
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                            <button mat-flat-button
+                                style="background-color: #068EDB;color:white;height:48px;width: 352px;">Sign in</button>
+                            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="108">
+                                <mat-checkbox class="remember-me" color="primary" >Remember Me</mat-checkbox>
+                                <a  routerLink="/forget" class="remember-me" style="text-decoration: none;">Forgot Password ?</a> 
+                            </div>
+                            <div class="error-message3">{{msg}}</div>
+                        </div>
+                </div>
+            </form>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8" >
+                    <div class="icon">Don’t have an account ?</div>
+                    <div class="dot"></div>
+                    <div class="register" ><a routerLink="/signup" style="text-decoration: none;"> Register </a>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8">
+        
+         <div><a href="/privacy" style="text-decoration: none;">Privacy Policy</a></div>
+         <div class="dot"></div>
+         <div><a href="/aboutus" style="text-decoration: none;">About Us</a></div>
+         <div class="dot"></div>
+         <div><a href="/contactus" style="text-decoration: none;">Contact Us</a></div>
+         
+        </div>
+       
+
+    
+
+</div>
+
+</body>

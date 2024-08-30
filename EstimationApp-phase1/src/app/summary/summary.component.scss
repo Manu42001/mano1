@@ -1,0 +1,50 @@
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.mat-form-field {
+  width: calc(50% - 16px);
+  margin-bottom: 20px;
+}
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.table {
+  width: auto;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table th {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #068EDB;
+}
+
+.table th:first-child {
+  text-align: left;
+}
+
+.table th:not(:first-child) {
+  width: calc((100% - 120px) / 10);
+}
+
+.table-container {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: scroll;
+  
+}
+
+.header-cell {
+  vertical-align: top;
+}

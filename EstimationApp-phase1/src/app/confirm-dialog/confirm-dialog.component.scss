@@ -1,0 +1,46 @@
+.icons{
+    margin-left: 280px;
+}
+.cancel{
+    display: flex;
+padding: 6px 6px 6px 8px;
+align-items: center;
+color: var(--New-Primary, #068EDB);
+/* Button */
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 1.25px;
+border-radius: 4px;
+border: 1px solid var(--New-Primary, #068EDB);
+}
+.yes{
+    display: flex;
+padding: 4px 8px 4px 6px;
+align-items: center;
+gap: 10px;
+border-radius: 4px;
+background: var(--New-Primary, #068EDB);
+color: var(--On-Primary-High-Emphasis, #FFF);
+
+/* Button */
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 1.25px;
+}
+.pp{
+    color: var(--On-Surface-High-Emphasis, rgba(0, 0, 0, 0.87));
+
+/* Body 1 */
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.5px;
+}

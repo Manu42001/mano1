@@ -1,0 +1,278 @@
+
+<div class="body">
+  <app-header></app-header>
+
+  <div class="dash" fxLayout="row" fxLayoutAlign="space-between">
+    <p>Dashboard</p>
+
+    <button mat-raised-button class="me-3" (click)="openNewRfpConfirmationDialog()">
+      <mat-icon>add</mat-icon>
+      New RFP
+    </button>
+  </div>
+
+ <div style="background: #f9f9f9">
+    <div class="welcome">
+      <!--  <p class="head ms-4">Welcome back, {{ fullName }}!</p>-->
+      <div *ngIf="welcomeBack; else welcomeBackMessage">
+        <p class="head ms-4">Welcome, {{ fullName }}!</p>
+      </div>
+  
+      <ng-template #welcomeBackMessage>
+        <p class="head ms-4">Welcome back, {{ fullName }}!</p>
+      </ng-template>
+      <p class="sub-head ms-4">Your dashboard details today</p>
+    </div> 
+    
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+        <mat-card class="card">
+          <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div fxLayout="row" fxLayoutGap="10">
+                <div class="img-con-1">
+                  <img src="/assets/stats.jpg" class="img1" />
+                </div>
+                <div fxLayout="column">
+                  <div>
+                    <p class="card-title">Total Projects</p>
+                  </div>
+                  <div>
+                    <p class="c-t-1">{{ totalProjectsCount }}</p>
+                  </div>
+                  <!-- <div>
+                    <p class="c-t-1">500</p>
+                  </div> -->
+                </div>
+              </div>
+
+              <div fxLayoutAlign="end end">
+                <div style="width: 100px; height: 50px">
+                  <div>
+                    <canvas id="myChart1"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+        <mat-card class="card">
+          <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div fxLayout="row" fxLayoutGap="10">
+                <div class="img-con-2">
+                  <img src="/assets/approved img.jpg" class="img2" />
+                </div>
+                <div fxLayout="column">
+                  <div>
+                    <p class="card-title">New Projects</p>
+                  </div>
+                  <div>
+
+                    <p class="c-t-2">{{ newProjectsCount }}</p>
+
+                  </div>
+                  <!-- <div>
+                    <p class="c-t-2">+35</p>
+                  </div> -->
+                </div>
+              </div>
+
+              <div fxLayoutAlign="end end">
+                <div style="width: 100px; height: 50px">
+                  <div>
+                    <canvas id="myChart2"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+        <mat-card class="card">
+          <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div fxLayout="row" fxLayoutGap="10">
+                <div class="img-con-3">
+                  <img src="/assets/files.jpg" class="img3" />
+                </div>
+                <div fxLayout="column">
+                  <div>
+                    <p class="card-title">Closed Projects</p>
+                  </div>
+                  <div>
+                    <p class="c-t-3">{{ closedProjectsCount }}</p>
+                  </div>
+                  <!-- <div>
+                    <p class="c-t-3">340</p>
+                  </div> -->
+                </div>
+              </div>
+
+              <div fxLayoutAlign="end end">
+                <div style="width: 50px; height: 50px">
+                  <div>
+                    <canvas id="myChart3"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div><br>
+<!-- 
+    <div class="rv" fxLayout="row" fxLayoutAlign="space-between">
+      <p class="ms-4 mt-1">Recently Viewed</p>
+
+      <button mat-raised-button class="me-3">
+        <mat-icon>launch</mat-icon>
+        View All Projects
+      </button>
+    </div> -->
+
+
+    <div class="example-container">
+
+      <table mat-table [dataSource]="dataSource">
+        <!-- Checkbox Column -->
+
+        <!-- ID Column -->
+
+        <ng-container matColumnDef="project-name">
+          <th mat-header-cell *matHeaderCellDef sortActionDescription="id">
+            <!-- <div class="header">Project Name</div> -->
+            <mat-form-field matFormFieldDense subscriptSizing="dynamic" class="outline">
+
+              <input matInput placeholder="Project Name" style="margin-top: 2px; color: black;"
+                (keyup)="applyFilter($event)">
+
+              <mat-icon matSuffix style="color: black;">search</mat-icon>
+
+            </mat-form-field>
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="user-id">
+            {{ element.format }}
+          </td>
+        </ng-container>
+
+        <!-- Roles Column -->
+
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="header">Date</div>
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="user-roles">
+            {{ element.date }}
+          </td>
+        </ng-container>
+
+        <!-- User Name Column -->
+
+        <!-- Display Name Column -->
+
+        <ng-container matColumnDef="Created">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="header">Created by</div>
+          </th>
+
+          <td style="color: blue" mat-cell *matCellDef="let element" class="user-roles">
+            {{ element.creator}}
+          </td>
+        </ng-container>
+
+        <!-- Email  Column -->
+
+        <ng-container matColumnDef="Est">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="header">Estimated Hours</div>
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="user-email">
+            {{ element.estimated_hours }} H
+          </td>
+        </ng-container>
+
+        <!-- Groups  Column -->
+
+        <ng-container matColumnDef="Groups">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="header"></div>
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="user-roles">
+            <button mat-raised-button style="background-color: #191d88; color: aliceblue; width: 150px;" (click)="exportToPdf(element.rfp_no, element.product,element.format)">
+              <mat-icon>exit_to_app</mat-icon>
+
+              Export PDF
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Copy_Record">
+          <th mat-header-cell *matHeaderCellDef></th>
+
+          <td mat-cell *matCellDef="let element">
+            <div style="display: flex; flex-direction: row; cursor: pointer;"matTooltip="Copy Record" >
+              <!-- <img class="image1" src="./assets/images/copy.png"/> -->
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Moreicon  Column -->
+
+        <ng-container matColumnDef="More">
+          <th mat-header-cell *matHeaderCellDef></th>
+
+          <td mat-cell *matCellDef="let element">
+            <div style="display: flex; flex-direction: row; gap: 10px; cursor: pointer;">
+              <img class="image" src="./assets/images/Edit.png" matTooltip="Edit"  (click)="onclickEdit(element.rfp_no, element.product)" />&nbsp;
+  
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                </svg>
+            </div>
+          </td>
+        </ng-container>
+
+
+
+
+        <tr mat-header-row style="background: #fafafa" *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      </table>
+      <div fxLayout="row" style="width: 100%;">
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+
+        </mat-paginator>
+
+        <!-- </div>
+
+      <div  style="width: 100%;">
+      
+        <mat-paginator 
+        [pageSizeOptions]="[5, 10, 20]"
+        [showFirstLastButtons]="true">
+</mat-paginator> -->
+
+        <!-- <mat-paginator [pageSize]="pageSize" [length]="dataSource.data.length" (page)="pageChanged($event)"></mat-paginator> -->
+      </div>
+
+    </div>
+
+  <!-- </div> -->
+  <!-- <button (click)="getrfpformat('RFP 28SEP_A')">hi</button> -->
+</div>

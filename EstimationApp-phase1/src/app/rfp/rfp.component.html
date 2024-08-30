@@ -1,0 +1,83 @@
+        <div  fxLayout="column" fxLayoutAlign="center center" fxFill >
+          <div class="form-card" >
+           <div fxLayout="column" fxLayoutAlign="center center">
+             <!-- <p id="title" class="cnr">Create New RFP</p> -->
+       
+             <form [formGroup]="rfpForm" >
+       
+              <div class="input-container">
+                <p id="title" class="cnr">Create New RFP</p>
+                <!-- <label for="Product">Product Name:</label> -->
+                <input type="text" id="Product" formControlName="product" placeholder="Product Name">
+                <span  class="error-message1" *ngIf="rfpForm.get('product')?.hasError('required') && rfpForm.get('product')?.touched">This field is required</span>
+               
+               
+                <!-- <label for="Date">Date:</label> -->
+                <input type="date"  id="Date" formControlName="date" placeholder="Select Date">
+                <span class="error-message1" *ngIf="rfpForm.get('date')?.hasError('required') && rfpForm.get('date')?.touched">This field is required</span>
+              </div>
+              <p style="color: red;text-align: center;">{{msg}}</p>
+              <div class="sc">
+              <div class="s">
+                <button type="submit" class="btn btn-primary mt-4" (click)="onSubmit()">Create</button>
+              </div>
+              <div class="c">
+                <button type="reset" class="cancel" (click)="closeDialog()" >cancel</button>
+              </div>
+              </div>
+             </form>
+            </div>
+          </div>
+        </div>
+      <!-- </body> -->
+         
+         
+          <!-- <div>
+            <label for="product">Product</label>
+            <select formControlName="product">
+             <option [ngValue]="a.id" *ngFor="let a of AirlinesList">
+                {{a.name}}
+              </option>
+            </select>
+            <span class=alert
+              *ngIf="rfpForm.get('product').invalid && (rfpForm.get('product').touched || rfpForm.get('product').dirty) ">Plese
+              enter valid date</span>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mt-">Submit</button>
+          </div>
+          <div>
+            <button type="submit" >Submit</button>
+          </div> -->
+       
+       
+       
+      <!-- </div>
+      </div> -->
+       
+        <!-- <body>
+          <app-header></app-header>
+       
+            <div fxLayout="column" fxLayoutAlign="center center" fxFill >
+             <div class="form-card">
+              <div fxLayout="column" fxLayoutAlign="center center">
+                <p id="title">RFP</p>
+                <div class="input-container">
+                  <label for="Product">Product Name:</label>
+                  <input type="text" id="Product" [(ngModel)]="ProductName" required>
+                  <span *ngIf="">This field is required</span>
+                 
+                  <label for="Date">Date:</label>
+                  <input type="date"  id="Date"  [min]="minDate" [(ngModel)]="RfpDate" required>
+                  <span *ngIf="">This field is required</span>
+                </div>
+       
+                <div>
+                  <button type="submit" class="btn btn-primary mt-4" (click)= "onSubmit()" >Submit</button>
+                </div>
+            </div>
+              </div>
+            </div>
+       
+        </body>
+        -->

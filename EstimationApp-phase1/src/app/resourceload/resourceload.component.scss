@@ -1,0 +1,17 @@
+.all {
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for the table */
+  }
+
+  table {
+    width: 100%; /* Ensure the table takes full width of its container */
+    min-width: 1200px; /* Minimum width to prevent collapsing columns */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+
+  th,
+  td {
+    text-align: center; /* Center align table header and cells */
+    padding: 10px; /* Adjust padding as needed */
+  }
+}

@@ -1,0 +1,291 @@
+<div class="all pt-3">
+  <div class="row">
+    <div class="col-10"></div>
+    <div class="col text-end">
+      <button class="btn btn-sm" style="margin-bottom: 10px; border-radius: 4px; background: var(--New-Primary, #068EDB); color: white;" (click)="addRow()">Add Row</button>
+    </div>
+  </div>
+  <div class="table-container">
+    <form>
+      <table class="table table-bordered">
+        <thead style="position: sticky; top:0px; z-index: 2;">
+          <tr class="table-primary">
+            <th scope="col">Sequence</th>
+            <th scope="col">Components</th>
+            <th scope="col">Sub Components</th>
+            <th scope="col">Phase</th>
+            <th scope="col">Size</th>
+            <th scope="col">Complexity</th>
+            <th scope="col">Estimation Type</th>
+            <th scope="col">Confidence</th>
+            <th scope="col">Units</th>
+            <th scope="col">Dev_Hours</th>
+            <th scope="col">Adjusted Hours</th>
+            <th scope="col">Total Estimation Hours</th>
+            <th scope="col">Analysis/<br>Requirement</th>
+            <th scope="col">Design</th>
+            <th scope="col">Construction</th>
+            <th scope="col">Build</th>
+            <th scope="col">Unit_Test</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody [formGroup]="effortForm">
+          <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls; let i=index">
+            <tr [formGroupName]="i">
+              <td>
+                <input type="text" formControlName="estimation_sequence" class="form-control" (change)="onSelectSeq($any($event.target).value, i)">
+              </td>
+              <td>
+                <select formControlName="component" class="form-control" (change)="onSelectSubComponent($any($event.target).value, i)" id="components">
+                  <option [value]="null" [disabled]="ComponentsList.length === 0">Select</option>
+                  <option *ngFor="let item of ComponentsList" [value]="item">{{item}}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="subComponent" class="form-control" (change)="onSelectSub($event, i)">
+                  <option [ngValue]="null">Select</option>
+                  <option *ngFor="let item of subComponentsList[i]" [value]="item">{{item}}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="phase" class="form-control" (change)="onPhaseChange($event, i)">
+                  <option [ngValue]="null" disabled>Select</option>
+                  <option *ngFor="let item of uniquePhases">{{ item }}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="size" class="form-control" (change)="onSizeChange($event, i)">
+                  <option [ngValue]="null" disabled>Select</option>
+                  <option *ngFor="let item of sizeList[i]">{{ item }}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="complexity" class="form-control" (change)="onComplexityChange($event, i)">
+                  <option [ngValue]="null" disabled>Select</option>
+                  <option *ngFor="let item of complexityList[i]">{{ item }}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="estimation_type" class="form-control" (change)="onSelectSample($event, i)">
+                  <option [ngValue]="null" disabled>Select</option>
+                  <option *ngFor="let item of Types" [ngValue]="item">{{ item }}</option>
+                </select>
+              </td>
+              <td>
+                <select formControlName="confidenceScale" class="form-control" (change)="onSelectCon(($any($event.target).value), i)">
+                  <option [ngValue]="null" disabled>Select</option>
+                  <option *ngFor="let value of dropdownValues">{{ value }}</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" formControlName="estimation_unit" class="form-control" (change)="UnitChange(($any($event.target).value), i)" />
+              </td>
+              <td>
+                <input readonly formControlName="calculated" class="form-control read" />
+              </td>
+              <td>
+                <input readonly formControlName="adjusted" class="form-control read" />
+              </td>
+              <td>
+                <input readonly formControlName="totalEsti" class="form-control read" />
+              </td>
+              <td>
+                <input readonly formControlName="analysis" class="form-control read">
+              </td>
+              <td>
+                <input readonly formControlName="design" class="form-control read">
+              </td>
+              <td>
+                <input readonly formControlName="construction" class="form-control read">
+              </td>
+              <td>
+                <input readonly formControlName="build" class="form-control read">
+              </td>
+              <td>
+                <input readonly formControlName="unitTest" class="form-control read">
+              </td>
+              <td>
+                <img src="assets/images/remove.png" style="width: 20px;height: 20px;" (click)="removeData(i)">
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngFor="let data of existingData; let i=index">
+            <tr>
+              <td>
+                <input readonly class="form-control read" [value]="data.estimation_sequence.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.component.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.subComponent.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.phase?.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.size?.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.complexity?.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.estimation_type.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.confidenceScale.S">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.estimation_unit.S" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.calculated.N" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.adjusted.N" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.totalEsti.N" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.analysis.N">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.design.N">
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.construction.N" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.build.N" />
+              </td>
+              <td>
+                <input readonly class="form-control read" [value]="data.unitTest.N" />
+              </td>
+              <td>
+                <img src="assets/images/remove.png" style="width: 20px;height: 20px; cursor: pointer;" (click)="removeloaddata(i,data.id.S)">
+                <i class="material-icons save-icon" style="width: 18px; height: 18px; cursor: pointer;" (click)="edit(data)">edit</i>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div>
+  <ng-container>
+    <tr>
+      <td colspan="15">
+        <div class="row">
+          <div class="col-12 text-center">
+            <button class="btn" style="margin: 10px 100px 0px 550px; background: var(--New-Primary, #068EDB); color: white;" (click)="onSaveForm()">Save</button>
+          </div>
+          <td>
+            <div>
+              <h4>Total Estimate: {{roundsum}} Hours</h4>
+            </div>
+          </td>
+        </div>
+      </td>
+    </tr>
+  </ng-container>
+</div>
+
+<ng-template #openme>
+  <h1>Edit</h1>
+  <mat-dialog-actions>
+    <div *ngIf="isEditOpen" class="edit-popup">
+      <table class="table table-bordered">
+        <thead style="position: sticky; top:0px; z-index: 2;">
+          <tr class="table-primary">
+            <th scope="col">Sequence</th>
+            <th scope="col">Components</th>
+            <th scope="col">Sub Components</th>
+            <th scope="col">Phase</th>
+            <th scope="col">Size</th>
+            <th scope="col">Complexity</th>
+            <th scope="col">Estimation Type</th>
+            <th scope="col">Confidence</th>
+            <th scope="col">Units</th>
+            <th scope="col">Dev_Hours</th>
+            <th scope="col">Adjusted Hours</th>
+            <th scope="col">Total Estimation Hours</th>
+            <th scope="col">Analysis/<br>Requirement</th>
+            <th scope="col">Design</th>
+            <th scope="col">Construction</th>
+            <th scope="col">Build</th>
+            <th scope="col">Unit_Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.estimation_sequence.S" placeholder="sequence">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.component.S" placeholder="component">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.subComponent.S" placeholder="subComponent">
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="editedItem.phase.S" (change)="onPhaseChangeEdit($event)">
+                <option *ngFor="let phase of uniquePhases">{{ phase }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="editedItem.size.S" (change)="onSizeChangeEdit($event)">
+                <option *ngFor="let size of availableSizes">{{ size }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="editedItem.complexity.S">
+                <option *ngFor="let complexity of availableComplexities">{{ complexity }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="editedItem.estimation_type.S" placeholder="EstimationType">
+                <option value="Function">Function</option>
+                <option value="Task">Task</option>
+              </select>
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editedItem.confidenceScale.S" placeholder="Confidence scale">
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editedItem.estimation_unit.S" placeholder="Unit">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.calculated.N" placeholder="Dev_hours">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.adjusted.N" placeholder="Adj_hours">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.totalEsti.N" placeholder="Total_esti_hours">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.analysis.N" placeholder="Analysis">
+            </td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.design.N" placeholder="Design"></td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.construction.N" placeholder="Construction"></td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.build.N" placeholder="Build"></td>
+            <td>
+              <input readonly class="form-control read" [(ngModel)]="editedItem.unitTest.N" placeholder="UnitTest">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: center;">
+        <button class="btn btn-sm btn-success" (click)="saveEdit1(editedItem)">Save</button>&nbsp;
+        <button class="btn btn-sm btn-primary" (click)="removeEdit()">Cancel</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</ng-template>

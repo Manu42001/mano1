@@ -1,0 +1,170 @@
+<head>
+  <meta mame="viewport" content="width-device-width">
+</head>
+<body>
+<body class="body">
+<div class="hw">
+<app-header></app-header>
+
+   <div class="proj">
+    <h1>Projects</h1>
+   </div>
+   <div class="abc">
+        <div class="svg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.42513 1.6774C8.26557 1.55329 8.04214 1.55329 7.88258 1.6774L2.58025 5.80143C2.47262 5.88514 2.40967 6.01386 2.40967 6.15021V12.6308C2.40967 13.0605 2.58036 13.4726 2.8842 13.7765C3.18804 14.0803 3.60013 14.251 4.02982 14.251H6.38641H9.9213H12.2779C12.7076 14.251 13.1197 14.0803 13.4235 13.7765C13.7273 13.4726 13.898 13.0605 13.898 12.6308V6.15021C13.898 6.01386 13.8351 5.88514 13.7275 5.80143L8.42513 1.6774ZM10.3632 13.3673H12.2779C12.4732 13.3673 12.6605 13.2897 12.7986 13.1516C12.9367 13.0135 13.0143 12.8261 13.0143 12.6308V6.36632L8.15385 2.58596L3.29339 6.36632V12.6308C3.29339 12.8261 3.37098 13.0135 3.50909 13.1516C3.64719 13.2897 3.83451 13.3673 4.02982 13.3673H5.94455V7.91765C5.94455 7.67362 6.14238 7.47579 6.38641 7.47579H9.9213C10.1653 7.47579 10.3632 7.67362 10.3632 7.91765V13.3673ZM6.82827 13.3673V8.35951H9.47944V13.3673H6.82827Z" fill="black" fill-opacity="0.38"/>
+        </svg>
+        </div>
+        <div class="home" routerLink="/dashboard" ><h3 >Home</h3>
+        </div>
+        <div class="sv1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none" class="arrow">
+          <path d="M4.50432 4.0023C4.50432 4.11744 4.45824 4.23258 4.37076 4.31088L0.718481 7.87563C0.640183 7.95392 0.538861 8 0.42372 8C0.184223 8 -3.41839e-07 7.82036 -3.3137e-07 7.58087C-3.26338e-07 7.46575 0.0460564 7.35983 0.119749 7.28154L3.72596 3.75359L3.72596 4.2464L0.119749 0.718481C0.0460567 0.644791 -2.35543e-08 0.538861 -1.832e-08 0.419113C-7.85143e-09 0.17962 0.184224 8.05267e-09 0.42372 1.85214e-08C0.538861 2.35544e-08 0.640183 0.0460564 0.723084 0.124352L4.37076 3.68912C4.45824 3.77662 4.50432 3.88255 4.50432 4.0023Z" fill="black" fill-opacity="0.38"/>
+        </svg></div>
+        <div class="pro"><h3>Projects</h3></div>
+   </div>
+    <div class="tb">
+     
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z2"  class="example-stretched-tabs custom-width" [(selectedIndex)]="selectedTabIndex">
+        <!-- <div  class="mat-mdc-tab-labels "> -->
+        <div class="list">
+          <mat-tab label="Setup">
+          <mat-expansion-panel   [expanded]="currentDropdownIndex === 0">
+                        <mat-expansion-panel-header class="set"  [ngClass]="{ 'disabled': currentDropdownIndex !== 0 }" >
+                          <mat-panel-title   [ngClass]="getMatPanelTitleClass('sdlc')">
+                            <span class="number-circle">1</span> 
+                            <div class="sdlc1">SDLC</div>
+                          </mat-panel-title>
+                            </mat-expansion-panel-header>
+                        <app-sdlc class="tab"></app-sdlc>
+                        <div  class="next-button" >
+                        <button mat-button (click)="goToNextDropdown()" [disabled]="isNextButtonDisabled" 
+                        style="background:  #007acc;font-family: Roboto;
+                        font-size: 14px;
+                        font-style: normal;
+                        color: var(--on-primary-high-emphasis, #FFF);
+                        font-weight: 500;
+                        line-height: normal;
+                        letter-spacing: 1.25px;">Next</button>
+                        </div>
+                      </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="currentDropdownIndex === 1">
+          
+                <mat-expansion-panel-header class="set"  (click)="toggleBackgroundColor()" [ngClass]="{ 'disabled': currentDropdownIndex !== 1}">
+                  <mat-panel-title [ngClass]="getMatPanelTitleClass('metrics')">
+                    <span class="number-circle1" [style.background]="background ? 'rgba(0, 0, 0, 0.38)': '#007acc'">2 </span>
+                    <div class="sdlc" [style.color]="background ? 'rgba(0, 0, 0, 0.38)': '#007acc'">Metrics</div> 
+                  </mat-panel-title>
+                  </mat-expansion-panel-header>
+                   <div class="t">
+                   <app-metrics class="tab" >
+               
+                    </app-metrics></div>
+                <div class="next-button">
+                <button mat-button (click)="goToNextDropdown()" 
+                style="background:  #007acc;font-family: Roboto;
+                font-size: 14px;
+                font-style: normal;
+                color: var(--on-primary-high-emphasis, #FFF);
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 1.25px;">Next</button>
+              </div>
+                </mat-expansion-panel>
+  
+              <mat-expansion-panel [expanded]="currentDropdownIndex === 2">
+                    
+                <mat-expansion-panel-header class="set" (click)="toggleBackgroundColor1()" [ngClass]="{ 'disabled': currentDropdownIndex !== 2 }">
+                  <mat-panel-title [ngClass]="getMatPanelTitleClass('data')">
+                    <span class="number-circle" [style.background]="background1 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">3</span>
+                    <div class="sdlc" [style.color]="background1 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">Data</div> 
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                      <app-data class="tab"></app-data>
+                      <div  class="next-button">
+                            <button mat-button (click)="goToNextDropdown()" 
+                            style="background:  #007acc;font-family: Roboto;
+                            font-size: 14px;
+                            font-style: normal;
+                            color: var(--on-primary-high-emphasis, #FFF);
+                            font-weight: 500;
+                            line-height: normal;
+                            letter-spacing: 1.25px;"
+                            >Next</button>
+                    </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="currentDropdownIndex === 3">
+                 
+                  <mat-expansion-panel-header class="set"  (click)="toggleBackgroundColor2()" [ngClass]="{ 'disabled': currentDropdownIndex !== 3}">
+                    <mat-panel-title [ngClass]="getMatPanelTitleClass('allocation')">
+                      <span class="number-circle" [style.background]="background2 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">4</span>
+                      <div class="sdlc" [style.color]="background2 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">Skills</div> 
+                    </mat-panel-title>
+                    </mat-expansion-panel-header>
+                     <div>
+                     <app-allocation>
+                 
+                      </app-allocation></div>
+                  <div class="next-button">
+                  <button mat-button (click)="goToNextDropdown()" 
+                  style="background:  #007acc;font-family: Roboto;
+                  font-size: 14px;
+                  font-style: normal;
+                  color: var(--on-primary-high-emphasis, #FFF);
+                  font-weight: 500;
+                  line-height: normal;
+                  letter-spacing: 1.25px;">Next</button>
+                </div>
+                  </mat-expansion-panel>
+
+                  <mat-expansion-panel [expanded]="currentDropdownIndex === 4">
+                 
+                    <mat-expansion-panel-header class="set"  (click)="toggleBackgroundColor3()" [ngClass]="{ 'disabled': currentDropdownIndex !== 4}">
+                      <mat-panel-title [ngClass]="getMatPanelTitleClass('set-duration')">
+                        <span class="number-circle" [style.background]="background3 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">5</span>
+                        <div class="sdlc" [style.color]="background3 ? 'rgba(0, 0, 0, 0.38)': '#007acc'">Duration</div> 
+                      </mat-panel-title>
+                      </mat-expansion-panel-header>
+                       <div>
+                       <app-set-allocation>
+                   
+                        </app-set-allocation></div>
+                    <div class="next-button">
+                    <button mat-button (click)="goToNextDropdown()" 
+                    style="background:  #007acc;font-family: Roboto;
+                    font-size: 14px;
+                    font-style: normal;
+                    color: var(--on-primary-high-emphasis, #FFF);
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: 1.25px;">Next</button>
+                  </div>
+                    </mat-expansion-panel>
+    
+                    
+          </mat-tab>
+     </div>
+      <div class="eff">
+        <mat-tab label="Effort Estimation"><app-inline></app-inline></mat-tab>
+      </div>
+       <!-- </mat-tab-group> -->
+       
+   
+
+       <div class="sum">
+        <mat-tab label="Summary"><app-summary></app-summary></mat-tab>
+      </div>
+
+      <div class="res">
+        <mat-tab label="Resource Load"><app-resourceload></app-resourceload> </mat-tab>
+      </div>
+     <!-- </div> -->
+       </mat-tab-group>
+      
+    </div>
+            <div class="cs">
+              <button class="btn btn-primary mt-4" routerLink='/dashboard' style="background: #191D88;font-family: Roboto;">Cancel</button>
+            <!-- <button class="btn btn-primary mt-4">Save</button> -->
+    </div>
+
+</div>   
+</body>

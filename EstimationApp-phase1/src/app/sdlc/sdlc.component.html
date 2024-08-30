@@ -1,0 +1,104 @@
+
+<!-- fxLayout="column" fxLayoutAlign="center center" -->
+<!-- <!DOCTYPE html class= "back"> -->
+<!-- <body> -->
+  
+<!-- <div class="back"> -->
+  <!-- <div> -->
+  <div class="table-container">
+    <h1 class="h1">Function Estimation</h1>
+    <!-- <p>___________________________________________</p> -->
+    <div class="tab1">
+    <table class="tc">
+      <thead>
+        <tr class="th">
+          <th>Phase</th><br>
+          <th>Lifecycle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let set of items; let i = index"  class="gap">
+          <tr>
+            <td>{{ set.phase }} </td><br>
+            <td>
+              <input type="number" [(ngModel)]="set.lifecycle" (ngModelChange)="updateTotal()"
+             class="ip"> <div class="p"> %</div> </td>
+          </tr>
+        </ng-container>
+        <tr>
+          
+          <td class="total">Total</td><br>    
+         
+          <!-- <div class="ip1"> -->
+            <td *ngIf="total>0" [ngStyle]="{'color': total==100?'green':'red'}" >{{ total}} %</td>
+          <!-- </div> -->
+        </tr>
+      </tbody>
+      
+     </table>
+
+      </div>
+     <!-- <div> -->
+     </div> 
+     <div class="end">
+     <div class="">
+        <button class="reset" (click)="cancelEdit()">Reset</button>
+      
+        </div>
+        <div class="">
+          <button claSS="save" [disabled] = "total !==100" (click)="saveDataToDynamoDB()">Save</button>
+        </div>
+    </div>
+       <!-- <button class="btn btn-primary mt-4" (click)="toggleEditing()" *ngIf="!isEditing && isSaved">Edit</button> -->
+         
+                                                  <!-- <div class="button-container">
+                                                    <button [disabled] = "total !==100" (click)="saveDataToDynamoDB()" class="ab" 
+                                                    >Save
+                                                  </button>
+                                                  
+                                                  </div> -->
+
+        <!-- <mat-icon class="cd" class="pi pi-check"></mat-icon> -->
+          <!-- <div  [disabled]="total !== 100" (click)="saveDataToDynamoDB()">
+          <mat-icon color="primary" class="btn btn-primary mt-4">check</mat-icon>
+        </div> -->
+          <!-- <div class="sv" (click)="saveDataToDynamoDB()">
+            <i class="pi pi-check" style="color:green"></i>
+          </div> -->
+        <!-- </div> -->
+          <!-- <button class="btn btn-primary mt-4" (click)="moveToNextPage()" *ngIf="!isEditing && isSaved">Next</button> -->
+                                        <!-- <div class="button-container1">
+                                        <button  class="btn btn-primary mt-4" (click)="cancelEdit()">Reset</button>
+                                        </div> -->
+          <!-- <div class="button-container1">
+                <div class="sv" (click)="cancelEdit()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+              <path d="M12 0.590515C5.37225 0.590515 0 5.96277 0 12.5905C0 19.2183 5.37225 24.5905 12 24.5905C18.6278 24.5905 24 19.2183 24 12.5905C24 5.96277 18.6278 0.590515 12 0.590515ZM8.25 7.27002L12 11.02L15.75 7.27002L17.3205 8.84052L13.5705 12.5905L17.3205 16.3405L15.75 17.911L12 14.161L8.25 17.911L6.6795 16.3405L10.4295 12.5905L6.6795 8.84052L8.25 7.27002Z" fill="#D60000"/>
+            </svg>
+            </div>
+          </div> -->
+          
+<!-- </div> -->
+  <!-- <div class="btn">
+    <button class="button btn-primary">Reset</button>
+      <button class="btn btn-primary mt-4" class="n">Next</button>
+    </div> -->
+
+<div class="col ">
+<div class="rfpNo">
+<!-- <div>{{format}}</div> -->
+</div>
+
+<!-- </div> -->
+
+</div>
+    
+<!-- <div>
+  <button>reset</button>
+  <button>save</button>
+</div> -->
+
+    
+
+
+

@@ -1,0 +1,358 @@
+body{
+  background-image: url('/assets/kisspng-triangle-black-and-white-royalty-free-pattern-blue-technology-triangle-5a9bab7e1f4128\ 1.png');
+  min-height: 100vh;
+  width: 100%;
+}
+.title-name {
+    color: #068EDB;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sub-title {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400px;
+}
+.icon{
+    color: var(--on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+}
+.remember-me{
+    color: #000;
+font-size: 14px;
+font-weight: 300;
+
+}
+.register{
+    color: var(--05-blue-500, #1666DC);
+text-align: center;
+font-size: 16px;
+font-weight: 400;
+}
+.privacy{
+    color: var(--05-blue-500, #1666DC);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+.dot{
+    border-radius: 4px;
+background: var(--on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+width: 4px;
+height: 4px;
+}
+mat-checkbox{
+    margin-left: -10px;
+
+}
+// .divider{
+//     border-top: 1px solid rgba(0, 0, 0, 0.12);
+//    padding-top: 10px;
+//    padding-bottom: 15px;
+// }
+
+.error-message3{
+    color: var(--on-primary-high-emphasis, #ff0000);
+  //   margin-top: 3px;
+  //     margin-left: 107px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+      font-size: 15px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .contain{
+//   background: url("~/src/assets/images/ABC.png");
+//   width: 1227px;
+//   height: 646px;
+//   // transform: rotate(125.075deg);
+//   flex-shrink: 0;
+// }
+// .frame1{
+//   background: linear-gradient(359deg, #FFF -6.17%, rgba(255, 255, 255, 0.00) 106.29%);
+//   display: inline-flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 24px;
+
+// }
+// .frame2{
+//   border-radius: 8px;
+// background: var(--Surface, #FFF);
+
+// /* Elevation/16 dp */
+// box-shadow: 0px 8px 10px 0px rgba(179, 171, 186, 0.20), 0px 6px 30px 0px rgba(179, 171, 186, 0.12), 0px 16px 24px 0px rgba(179, 171, 186, 0.14);
+// display: flex;
+// width: 400px;
+// padding: 28px 24px;
+// flex-direction: column;
+// align-items: center;
+// gap: 24px;
+// }
+// .top
+// {
+//   margin-top: -17px;
+//   width: 352px;
+//   color: #068EDB;
+// text-align: center;
+// /* Title */
+// font-family: Poppins;
+// font-size: 20px;
+// font-style: normal;
+// font-weight: 500;
+// line-height: normal;
+// letter-spacing: 0.15px;
+// }
+// .registered{
+//   width: 352px;
+//   color: #000;
+//   text-align: center;
+
+// /* Sub Heading 1 */
+//   font-family: Poppins;
+//   font-size: 16px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 0.15px;
+//   margin-top: -24px;
+//     margin-left: auto;
+// }
+// .email{
+//   border-radius: 8px;
+//   border: 1px solid rgba(0, 0, 0, 0.12);
+//   background: var(--Background, #FAFAFA);
+//   display: flex;
+//   width: 330px;
+//   height: 21px;
+//   padding: 16px;
+//   align-items: flex-start;
+//   gap: 12px;
+//   flex-shrink: 0;
+//   margin-top: 24px;
+// }
+// .place{
+//   width: 92%;
+//   border: whitesmoke;
+//   background-color:#fafafa;
+// }
+// .icon{
+//   background: url("~/src/assets/images/icon.png");
+//   width: 24px;
+//   height: 24px;
+//   flex-shrink: 0;
+
+// }
+// .textbox{
+//   flex: 1 0 0;
+//   color: var(--on-surface-medium-emphasis, rgba(238, 237, 237, 0.932));
+//   font-family: Roboto;
+//   font-size: 16px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 24px; /* 150% */
+//   letter-spacing: 0.5px;
+//   border-color: var(--on-primary-high-emphasis, #ff0000);
+//   width:400px;
+// }
+// .continue{
+//   border-radius: 4px;
+//   background: #068EDB;
+//   display: flex;
+//   width: 352px;
+//   height: 40px;
+//   padding: 6px 6px 6px 8px;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 22px;
+// }
+// .text{
+//   margin-top: -3px;
+//   margin-left: 0px;
+//   width: 97%;
+//   background: #fafafa;
+//   border: white;
+//   height: 23px;
+
+// }
+// .concol{
+//   color: var(--on-primary-high-emphasis, #FFF);
+// /* Button */
+//   font-family: Roboto;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 500;
+//   line-height: normal;
+//   letter-spacing: 1.25px;
+
+// }
+// .line{
+//   background: #DDD;
+//   width: 352px;
+//   height: 1px;
+// }
+// .doyou{
+//   color: rgba(0, 0, 0, 0.60);
+//   text-align: center;
+
+//   /* Body 1 */
+//   font-family: Roboto;
+//   font-size: 16px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 0.5px;
+// }
+// .dot{
+//   border-radius: 4px;
+//   background: var(--on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+//   width: 4px;
+//   height: 4px;
+
+// }
+// .register{
+//   color: var(--05-blue-500, #1666DC);
+//   text-align: center;
+
+
+//   /* Body 1 */
+//   font-family: Roboto;
+//   font-size: 16px;
+//   font-style: normal;
+//   font-weight: 400;
+//   // line-height: normal;
+//   letter-spacing: 0.5px;
+//   height: 53px;
+
+
+// }
+// .full-container{
+//   background: linear-gradient(359deg, #FFF -6.17%, rgba(255, 255, 255, 0.00) 106.29%);
+//   display: inline-flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 24px;
+//   margin: 65px 0px 0px 400px;
+// }
+// .fullreg
+// {
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+// }
+// .privacy
+// {
+//   color: var(--05-blue-500, #1666DC);
+//   text-align: center;
+
+//   /* Body 2 */
+//   font-family: Roboto;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 0.25px;
+// }
+// .dot2{
+//   border-radius: 4px;
+//   background: var(--on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+//   width: 4px;
+//   height: 4px;
+// }
+// .about{
+//   color: var(--05-blue-500, #1666DC);
+//   text-align: center;
+
+//   /* Body 2 */
+//   font-family: Roboto;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 0.25px;
+// }
+// .dot3{
+//   border-radius: 4px;
+//   background: var(--on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+//   width: 4px;
+//   height: 4px;
+// }
+// .contact
+// {
+//   color: var(--05-blue-500, #1666DC);
+//   text-align: center;
+
+//   /* Body 2 */
+//   font-family: Roboto;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 0.25px;
+// }
+// .fully
+// {
+//   display: flex;
+// align-items: center;
+// gap: 8px;
+// }
+// .fullemail{
+//   display: flex;
+//   width: 352px;
+//   height: 90px
+//   // padding-bottom: 0px;
+//   // justify-content: center;
+//   // align-items: center;
+//   // margin-left:8px;
+// }
+// .red{
+//   color: var(--on-primary-high-emphasis, #ff0000);
+//   color: var(--on-primary-high-emphasis, #ff0000);
+//   margin-top: 20px;
+//   margin-left: 72px;
+// }
+// .emailcol{
+//   color: var(--on-primary-high-emphasis, #ff0000);
+//   color: var(--on-primary-high-emphasis, #ff0000);
+//   margin-top: 20px;
+//   margin-left: 72px;
+
+// }
+
+// // .einp{
+// //   border:-15px solid white;
+// // }

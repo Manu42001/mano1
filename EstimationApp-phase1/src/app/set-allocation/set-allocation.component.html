@@ -1,0 +1,32 @@
+<form (ngSubmit)="onSubmit()">
+  <div fxLayout="row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Onsite Monthly Hours</mat-label>
+      <input matInput placeholder="Onsite Monthly hours" [(ngModel)]="onsiteMonthlyHours" name="onsiteMonthlyHours" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Offshore Monthly Hours</mat-label>
+      <input matInput placeholder="Offshore Monthly hours" [(ngModel)]="offshoreMonthlyHours" name="offshoreMonthlyHours" required>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Duration (in Months, M)</mat-label>
+    <input matInput placeholder="Duration" [(ngModel)]="duration" name="duration" required>
+  </mat-form-field>
+
+  <div fxLayout="row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Onsite Percentage</mat-label>
+      <input matInput placeholder="Onsite Percentage" [(ngModel)]="onsitePercentage" name="onsitePercentage" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Offshore Percentage</mat-label>
+      <input matInput placeholder="Offshore Percentage" [(ngModel)]="offshorePercentage" name="offshorePercentage" required>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Save Changes</button>
+</form>

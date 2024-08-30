@@ -1,0 +1,74 @@
+<!-- your-component.component.html -->
+<ng-container>
+  <mat-table [dataSource]="datasource">
+    <!-- Define your columns here -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <mat-header-cell *matHeaderCellDef>{{column}}</mat-header-cell>
+      <!-- <mat-cell *matCellDef="let employee">{{ employee.id }}</mat-cell> -->
+    </ng-container>
+
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <!-- <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+  </mat-table>
+</ng-container>
+
+
+
+<mat-accordion>
+  <ng-container *ngFor="let row of getKeys()">
+
+    <mat-expansion-panel [expanded]="expandedRow === +row">
+      <mat-expansion-panel-header (click)="toggleExpansion(+row)">
+        <mat-panel-title>
+          {{ row }}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngIf="expandedRow === +row">
+
+        <mat-table [dataSource]="datasource">
+          <!-- Define your columns here -->
+          <ng-container matColumnDef="Sequence">
+            <!-- <mat-header-cell *matHeaderCellDef>ID</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.component.S }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Data Migration">
+            <!-- <mat-header-cell *matHeaderCellDef>Name</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Development">
+            <!-- <mat-header-cell *matHeaderCellDef>Role</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.role }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Testing ">
+            <!-- <mat-header-cell *matHeaderCellDef>Role</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.role }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="TPF Conversion">
+            <!-- <mat-header-cell *matHeaderCellDef>Role</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.role }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Grand Total">
+            <!-- <mat-header-cell *matHeaderCellDef>Role</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.role }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="With PM">
+            <!-- <mat-header-cell *matHeaderCellDef>Role</mat-header-cell> -->
+            <mat-cell *matCellDef="let item">{{ item.role }}</mat-cell>
+          </ng-container>
+
+          <!-- <mat-header-row *matHeaderRowDef="['id', 'name', 'role']"></mat-header-row> -->
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+      </div>
+     
+    </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
+<!-- <mat-paginator [pageSizeOptions]="[5,10,15]" [showFirstLastButtons]></mat-paginator> -->

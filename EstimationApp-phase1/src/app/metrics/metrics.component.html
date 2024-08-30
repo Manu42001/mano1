@@ -1,0 +1,145 @@
+<html>
+<head>
+  <meta mame="viewport" content="width-device-width">
+ 
+</head>
+<body>
+  <div class= "back">
+    <div class="first">
+      <input class="p"  [(ngModel)]="filterPhase" (input)="applyFilter()" placeholder="Search Phase">
+      <div class="sr">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+          <path d="M19.3408 20.227L13.2773 14.1635C12.7799 14.6037 12.1998 14.943 11.5371 15.1812C10.8744 15.4194 10.1885 15.5385 9.47927 15.5385C7.78139 15.5385 6.34442 14.9509 5.16837 13.7757C3.99232 12.6004 3.4043 11.1754 3.4043 9.50069C3.4043 7.82594 3.99191 6.40042 5.16715 5.22414C6.34238 4.04786 7.76921 3.45972 9.44762 3.45972C11.1261 3.45972 12.5532 4.04749 13.729 5.22304C14.9048 6.39858 15.4927 7.82402 15.4927 9.49939C15.4927 10.1999 15.3728 10.8818 15.1331 11.5453C14.8933 12.2087 14.5465 12.8097 14.0927 13.3481L20.2062 19.4212C20.3177 19.5275 20.3735 19.6579 20.3735 19.8125C20.3735 19.967 20.3094 20.1052 20.1812 20.2269C20.0632 20.3449 19.9213 20.4039 19.7554 20.4039C19.5896 20.4039 19.4513 20.3449 19.3408 20.227ZM9.4639 14.4039C10.8298 14.4039 11.987 13.928 12.9354 12.976C13.8839 12.0241 14.3581 10.8651 14.3581 9.49912C14.3581 8.1331 13.8839 6.97413 12.9354 6.02219C11.987 5.07028 10.8298 4.59432 9.4639 4.59432C8.08943 4.59432 6.92498 5.07028 5.97055 6.02219C5.01611 6.97413 4.5389 8.1331 4.5389 9.49912C4.5389 10.8651 5.01611 12.0241 5.97055 12.976C6.92498 13.928 8.08943 14.4039 9.4639 14.4039Z" fill="black" fill-opacity="0.38"/>
+        </svg>
+      </div>
+     </div>
+    <div class="b">
+     <div class="sb">
+       <button class="d" (click)="deletePhase()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+          <path d="M3.91802 7.46749H10.082C10.2005 7.46749 10.2998 7.42713 10.3799 7.34641C10.46 7.26567 10.5 7.16554 10.5 7.046C10.5 6.92646 10.46 6.82749 10.3799 6.74908C10.2998 6.67068 10.2005 6.63148 10.082 6.63148H3.91802C3.79946 6.63148 3.70015 6.67185 3.6201 6.75257C3.54004 6.83329 3.50001 6.93342 3.50001 7.05296C3.50001 7.1725 3.54004 7.27148 3.6201 7.34989C3.70015 7.42829 3.79946 7.46749 3.91802 7.46749ZM7.00613 14.0906C6.03651 14.0906 5.12837 13.9069 4.28171 13.5394C3.43505 13.172 2.69357 12.6702 2.05727 12.0342C1.42095 11.3982 0.918998 10.6566 0.551399 9.80938C0.1838 8.96218 0 8.05326 0 7.0826C0 6.11666 0.18372 5.20872 0.551159 4.35878C0.918599 3.50884 1.42033 2.7688 2.05635 2.13863C2.69238 1.50846 3.43399 1.00957 4.28119 0.641975C5.12839 0.274376 6.03732 0.0905762 7.00798 0.0905762C7.97392 0.0905762 8.88186 0.274296 9.73179 0.641735C10.5817 1.00918 11.3218 1.50783 11.9519 2.13771C12.5821 2.7676 13.081 3.50831 13.4486 4.35983C13.8162 5.21134 14 6.11954 14 7.08444C14 8.05407 13.8163 8.96221 13.4488 9.80887C13.0814 10.6555 12.5827 11.3959 11.9529 12.0299C11.323 12.664 10.5823 13.1659 9.73074 13.5358C8.87923 13.9056 7.97103 14.0906 7.00613 14.0906ZM7.00921 13.2546C8.71859 13.2546 10.1717 12.6542 11.3686 11.4535C12.5655 10.2529 13.164 8.79547 13.164 7.08137C13.164 5.37199 12.5667 3.91884 11.3721 2.72194C10.1775 1.52505 8.72013 0.926599 7 0.926599C5.29203 0.926599 3.83771 1.5239 2.63704 2.71849C1.43636 3.91309 0.836023 5.37045 0.836023 7.09058C0.836023 8.79854 1.43636 10.2529 2.63704 11.4535C3.83771 12.6542 5.2951 13.2546 7.00921 13.2546Z" fill="#068EDB"/>
+        </svg>
+        Delete</button>
+        <button class="d" (click)="loadData()" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+          <path d="M13.4615 5.47519C13.1654 5.47519 12.9231 5.7175 12.9231 6.01365V10.3213C12.9231 11.8075 11.7169 13.0137 10.2308 13.0137H3.76923C2.28308 13.0137 1.07692 11.8075 1.07692 10.3213V3.85981C1.07692 2.37365 2.28308 1.1675 3.76923 1.1675H8.07692C8.37308 1.1675 8.61539 0.925192 8.61539 0.629038C8.61539 0.332884 8.37308 0.0905762 8.07692 0.0905762H3.76923C1.69077 0.0905762 0 1.78135 0 3.85981V10.3213C0 12.3998 1.69077 14.0906 3.76923 14.0906H10.2308C12.3092 14.0906 14 12.3998 14 10.3213V6.01365C14 5.7175 13.7577 5.47519 13.4615 5.47519Z" fill="#068EDB"/>
+          <path d="M5.4007 6.42288L4.86224 8.57673C4.81378 8.75981 4.86763 8.95365 5.00224 9.08827C5.10455 9.19058 5.24455 9.24442 5.38455 9.24442C5.42763 9.24442 5.4707 9.23904 5.51378 9.22827L7.66763 8.68981C7.76455 8.66827 7.8507 8.61981 7.9207 8.54981L13.5099 2.96058C13.8276 2.64288 13.9999 2.2175 13.9999 1.77058C13.9999 0.844422 13.2461 0.0905762 12.3199 0.0905762C11.8676 0.0905762 11.4476 0.262884 11.1299 0.580576L5.5407 6.16981C5.4707 6.23981 5.42224 6.32596 5.4007 6.42288Z" fill="#068EDB"/>
+        </svg>Edit</button>
+       </div>
+        
+    </div>
+    <br>
+    <div class="css">
+    
+      <div class="mb">
+        
+        <input matInput [matAutocomplete]="auto" 
+        [(ngModel)]="selectedPhase" 
+        placeholder="Phase" 
+         list="Phases"
+          class="form-control" 
+          [formControl]="phaseFormControl"  id="phase" 
+         [(ngModel)]="selectedPhase" name="phase" (ngModelChange)="validateForm()" required >
+         
+      </div>
+       
+      <div class="s">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of Phases" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+       
+          <mat-checkbox color="primary" [(ngModel)]="isSizeChecked"  id="size" (change)="validateForm()">
+           <div >Size</div>
+          <!-- Size -->
+          </mat-checkbox>
+         
+       
+          <mat-checkbox  color="primary" [(ngModel)]="isCompChecked" id="complexity" (change)="validateForm()">
+            <div class="sd"> Complexity</div>
+            <!-- Complexity -->
+          </mat-checkbox>&nbsp;
+        <div >
+          <!-- <mat-checkbox [(ngModel)]="isSizeChecked" id="size" (change)="validateForm()">Size</mat-checkbox>&nbsp; -->
+          <button mat-raised-button color="primary" [disabled]="!isFormValid "(click)="AddPhase()">
+          Submit
+          </button>
+        </div>
+      </div>
+    </div><br>
+   <!-- <div class="tc"> -->
+    <div class="table-container">
+    
+    <table *ngIf="ShowTable" class="table-container1" #fixedTable>
+
+    <thead class="fixed-table">
+      <tr class="custom-height">
+        <ng-container matColumnDef="select">
+        <th style="width: 9%; text-align:flex-start;">
+           <mat-checkbox color="primary"
+          [(ngModel)]="CheckAll"
+          (ngModelChange)="SelectAllProjects($event)"
+       ></mat-checkbox>
+        </th>
+        </ng-container>
+        
+        <th  style="width: 35%;">Phase
+         
+        </th>
+        <th>Complexity</th>
+        <th>Size</th>
+        <th>Hours</th>
+        <th  style="width: 5%; text-align:center;"></th>
+      </tr>
+      </thead>
+    <tbody style="background-color: white;">
+      <ng-container *ngFor="let item of filteredData; let index =index" >
+      <tr [ngClass]="{'Zero-hours-row': item.hours.N == 0}" class="custom-height">
+        <td style="width: 5%; text-align:flex-start;">
+            <mat-checkbox color="primary" 
+              [checked]="isProjectSelected(item.phase.S)"
+              (change)="onSelectProject(item.phase.S)"></mat-checkbox>
+        </td>
+        <!-- <td [ngClass]="{'selected-row': isRowSelected(item.phase.S)}" >{{ item.phase.S }}</td> -->
+        <td>{{ item.phase.S }}</td>
+        <td>{{ item.complexity.S }} </td>
+        <td >{{ item.size.S }}</td>
+        <!-- <td>{{item.edit.S}}</td> -->
+        <!-- <td>{{ item.hours.N }}</td> -->
+        <td (mouseenter)="item.hours.isHovered = true" (mouseleave)="item.hours.isHovered = false">
+          <input type="number" style="width: 134px; height:35px; text-align:center;margin-top: 1px; border-radius: 5px;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          
+          background: rgba(0, 0, 0, 0.15); "
+          [(ngModel)]="item.hours.N" 
+          (input)="checkSaveButtonStatus()"
+          [disabled]="!isFieldEditable(index)"/> 
+            
+        </td>
+        <td class="editb">
+          <div class="save" (click)="onEdit(index)" >
+            <img class="image" src="./assets/images/Edit.png" matTooltip="Edit"/>&nbsp;
+           
+          </div>
+         
+              <div class="save" >
+              <ng-container *ngIf="isFieldEditable(index)">
+                <i class="material-icons save-icon"  style="cursor: pointer;" (click)="onSave(index, item.index.S)">save</i>
+                <!-- <mat-icon class="save-icon" (click)="onSave(index, item.index.S)">save</mat-icon> -->
+              </ng-container>
+            </div>
+        </td>
+             
+      </tr>
+    </ng-container>
+     
+    
+    </tbody>
+   </table>
+   
+   </div>
+  
+  
+ </div>
+<!-- </div> -->
+</body>
+</html>

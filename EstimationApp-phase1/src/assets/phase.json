@@ -1,0 +1,18 @@
+[
+    "TPF Analysis",
+    "Development",
+    "Integration-API",
+    "Integration-MQ",
+    "Integration-SFTP",
+    "Data Migration",
+    "Testing - SIT",
+    "Testing - Regression",
+    "Testing - Performance",
+    "Testing - API",
+    "UAT",
+    "Security Testing - Vulnerability",
+    "Security Testing - Penetrating",
+    "Go Live - Full Size",
+    "Go Live - Medium Size",
+    "Go Live - Small Size"
+]

@@ -1,0 +1,172 @@
+<style>
+  /* Hide the spinner (arrows) in number input fields */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+</style>
+
+<div class="all pt-3">
+  <div class="row">
+    <div class="col-10"></div>
+    <div class="col text-end">
+      <button class="btn btn-sm" style="margin-bottom: 10px; border-radius: 4px; background: var(--New-Primary, #068EDB); color: white;" (click)="addRow()">Add Row</button>
+    </div>
+  </div>
+  <div class="table-container">
+    <form>
+      <table class="table table-bordered">
+        <thead style="position: sticky; top: 0px; z-index: 2;">
+          <tr class="table-primary">
+            <th scope="col">Delivery Location</th>
+            <th scope="col">Level</th>
+            <th scope="col">Sequence Number</th>
+            <th scope="col">Component</th>
+            <th scope="col">Phase</th>
+            <th scope="col">Skills</th>
+            <th scope="col">Total</th>
+            <th scope="col">M01</th>
+            <th scope="col">M02</th>
+            <th scope="col">M03</th>
+            <th scope="col">M04</th>
+            <th scope="col">M05</th>
+            <th scope="col">M06</th>
+            <th scope="col">M07</th>
+            <th scope="col">M08</th>
+            <th scope="col">M09</th>
+            <th scope="col">M10</th>
+            <th scope="col">M11</th>
+            <th scope="col">M12</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row for data entry -->
+          <tr *ngIf="showEntryRow">
+            <td><input type="text" class="form-control" [(ngModel)]="newRow.deliveryLocation" name="deliveryLocationNew"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.level" name="levelNew"></td>
+            <td>
+              <select class="form-control" [(ngModel)]="newRow.sequenceNumber" name="sequenceNumberNew" (change)="onSequenceChange(newRow.sequenceNumber)">
+                <option [ngValue]="null" disabled>Select Sequence</option>
+                <option *ngFor="let sequence of sequenceNumbers" [ngValue]="sequence">{{ sequence }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="newRow.component" name="componentNew">
+                <option [ngValue]="null" disabled>Select Component</option>
+                <option *ngFor="let component of componentsForSequence" [ngValue]="component">{{ component }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="newRow.phase" name="phaseNew" (change)="onPhaseChange(newRow.phase)">
+                <option [ngValue]="null" disabled>Select Phase</option>
+                <option *ngFor="let phase of uniquePhases">{{ phase }}</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" [(ngModel)]="newRow.skills" name="skillsNew" multiple>
+                <option *ngFor="let skill of skillOptions" [ngValue]="skill">{{ skill }}</option>
+              </select>
+            </td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.total" name="totalNew" readonly></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m1" name="m1New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m2" name="m2New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m3" name="m3New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m4" name="m4New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m5" name="m5New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m6" name="m6New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m7" name="m7New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m8" name="m8New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m9" name="m9New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m10" name="m10New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m11" name="m11New" (input)="updateTotal(newRow)"></td>
+            <td><input type="number" class="form-control" [(ngModel)]="newRow.m12" name="m12New" (input)="updateTotal(newRow)"></td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm" (click)="saveRow()">Save</button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="cancelEntry()">Cancel</button>
+            </td>
+          </tr>
+
+          <!-- Rows for saved data -->
+          <tr *ngFor="let row of savedRows">
+            <ng-container *ngIf="!row.editing; else editRowTemplate">
+              <td>{{ row.deliveryLocation }}</td>
+              <td>{{ row.level }}</td>
+              <td>{{ row.sequenceNumber }}</td>
+              <td>{{ row.component }}</td>
+              <td>{{ row.phase }}</td>
+              <td>{{ row.skills.join(', ') }}</td>
+              <td>{{ row.total }}</td>
+              <td>{{ row.m1 }}</td>
+              <td>{{ row.m2 }}</td>
+              <td>{{ row.m3 }}</td>
+              <td>{{ row.m4 }}</td>
+              <td>{{ row.m5 }}</td>
+              <td>{{ row.m6 }}</td>
+              <td>{{ row.m7 }}</td>
+              <td>{{ row.m8 }}</td>
+              <td>{{ row.m9 }}</td>
+              <td>{{ row.m10 }}</td>
+              <td>{{ row.m11 }}</td>
+              <td>{{ row.m12 }}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" (click)="editRow(row)">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeSavedRow(row)">Remove</button>
+              </td>
+            </ng-container>
+
+            <ng-template #editRowTemplate>
+              <td><input type="text" class="form-control" [(ngModel)]="row.deliveryLocation"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.level"></td>
+              <td>
+                <select class="form-control" [(ngModel)]="row.sequenceNumber" (change)="onSequenceChange(row.sequenceNumber)">
+                  <option [ngValue]="null" disabled>Select Sequence</option>
+                  <option *ngFor="let sequence of sequenceNumbers" [ngValue]="sequence">{{ sequence }}</option>
+                </select>
+              </td>
+              <td>
+                <select class="form-control" [(ngModel)]="row.component">
+                  <option [ngValue]="null" disabled>Select Component</option>
+                  <option *ngFor="let component of componentsForSequence" [ngValue]="component">{{ component }}</option>
+                </select>
+              </td>
+              <td>
+                <select class="form-control" [(ngModel)]="row.phase" (change)="onPhaseChange(row.phase)">
+                  <option [ngValue]="null" disabled>Select Phase</option>
+                  <option *ngFor="let phase of uniquePhases">{{ phase }}</option>
+                </select>
+              </td>
+              <td>
+                <select class="form-control" [(ngModel)]="row.skills" multiple>
+                  <option *ngFor="let skill of skillOptions" [ngValue]="skill">{{ skill }}</option>
+                </select>
+              </td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.total" readonly></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m1" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m2" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m3" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m4" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m5" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m6" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m7" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m8" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m9" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m10" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m11" (input)="updateTotal(row)"></td>
+              <td><input type="number" class="form-control" [(ngModel)]="row.m12" (input)="updateTotal(row)"></td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" (click)="saveEditedRow(row)">Save</button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="cancelEdit(row)">Cancel</button>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>

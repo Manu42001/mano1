@@ -1,0 +1,47 @@
+<body>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24" fxFill>
+    <div class="card">
+      <div class="heading" fxLayout="column" fxLayoutAlign="center center">
+        <p id="h1">Request For Proposal</p>
+        <p id="h2">Please register details to sign up </p>
+
+        <form [formGroup]="signupForm">
+          <mat-form-field class="example-full-width input-con" style="margin-top: .5rem;">
+            <mat-label>Enter your full name</mat-label>
+            <input type="text" matInput formControlName="username" placeholder="Ex. Steve">
+            <mat-error *ngIf="signupForm.get('username')?.hasError('required')">Username is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field class="example-full-width input-con">
+            <mat-label>Enter your organisation email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error
+              *ngIf="signupForm.get('email')?.hasError('email') && !signupForm.get('email')?.hasError('required')">Please
+              enter a valid email address</mat-error>
+            <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Email is required</mat-error>
+          </mat-form-field>
+        </form>
+
+        <button [disabled]="signupForm.invalid" (click)="onSubmit()" routerLink="/password" >Sign Up</button>
+
+
+        <hr style="width: 320px;
+    color: black; margin-top: 1rem;">
+
+        <div>
+          <p>Already has an account? <a href="" style="text-decoration: none;">Sign In</a></p>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8">
+      <div><a href="/privacy" style="text-decoration: none;">Privacy Policy</a></div>
+      <div class="dot"></div>
+      <div><a href="/aboutus" style="text-decoration: none;">About Us</a></div>
+      <div class="dot"></div>
+      <div><a href="/contactus" style="text-decoration: none;">Contact Us</a></div>
+      
+      </div>
+
+
+  </div>
+</body>
